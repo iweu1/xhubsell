@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { SellerModule } from './seller/seller.module';
 import { ClientModule } from './client/client.module';
+import { PublicModule } from './public/public.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { ClientModule } from './client/client.module';
     AdminModule,
     SellerModule,
     ClientModule,
+    PublicModule,
   ],
   controllers: [AppController],
   providers: [AppService],

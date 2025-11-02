@@ -32,5 +32,10 @@
   "profile": "Profile",
   "logout": "Logout",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "error": {
+    "loadingFailed": "Failed to load data. Please try again.",
+    "networkError": "Network error. Please check your connection.",
+    "notFound": "Page not found."
+  }
 }
