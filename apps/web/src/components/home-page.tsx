@@ -24,8 +24,6 @@ import {
 } from 'lucide-react';
 
 export function HomePage() {
-  const { t } = useTranslation(['home', 'common']);
-
   return (
     <div className="space-y-16">
       {/* Hero Section with Search */}
@@ -37,7 +35,10 @@ export function HomePage() {
       {/* Top Sellers Section */}
       <TopSellers />
 
-      {/* Stats Section */}
+      {/* How It Works Section */}
+      <HowItWorks />
+
+      {/* Platform Stats Section */}
       <section className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
@@ -66,6 +67,9 @@ export function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Inline Banner */}
+      <BannerSlot position="inline" className="container" />
 
       {/* Features Section */}
       <section className="container">
