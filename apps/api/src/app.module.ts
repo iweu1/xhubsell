@@ -6,6 +6,10 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { HealthModule } from './health/health.module';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
+import { SellerModule } from './seller/seller.module';
+import { ClientModule } from './client/client.module';
 
 @Module({
   imports: [
@@ -22,6 +26,10 @@ import { HealthModule } from './health/health.module';
     PrismaModule,
     RedisModule,
     HealthModule,
+    AuthModule,
+    AdminModule,
+    SellerModule,
+    ClientModule,
   ],
   controllers: [AppController],
   providers: [AppService],
