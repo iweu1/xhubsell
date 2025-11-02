@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from 'next-i18next';
-import { PageHero } from '@/components/layout/page-hero';
+import { HeroSearch } from '@/components/layout/hero-search';
 import { SectionHeading } from '@/components/layout/section-heading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,29 +26,17 @@ export function HomePage() {
 
   return (
     <div className="space-y-16">
-      {/* Hero Section */}
-      <PageHero
-        title={t('home:title')}
-        subtitle="Welcome to XHubSell"
-        description="Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces."
-      >
-        <Button size="lg" className="gradient-primary">
-          {t('home:getStarted')}
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-        <Button size="lg" variant="outline">
-          {t('home:learnMore')}
-        </Button>
-      </PageHero>
+      {/* Hero Section with Search */}
+      <HeroSearch />
 
       {/* Stats Section */}
       <section className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Users, label: t('home:stats.sellers'), value: '1,234', color: 'text-primary' },
-            { icon: Package, label: t('home:stats.products'), value: '45,678', color: 'text-secondary' },
-            { icon: ShoppingCart, label: t('home:stats.transactions'), value: '89,012', color: 'text-status-success' },
-            { icon: TrendingUp, label: t('home:stats.customers'), value: '234,567', color: 'text-status-warning' },
+            { icon: Users, label: t('stats.sellers'), value: '1,234', color: 'text-primary' },
+            { icon: Package, label: t('stats.products'), value: '45,678', color: 'text-secondary' },
+            { icon: ShoppingCart, label: t('stats.transactions'), value: '89,012', color: 'text-status-success' },
+            { icon: TrendingUp, label: t('stats.customers'), value: '234,567', color: 'text-status-warning' },
           ].map((stat, index) => (
             <Card key={index} className="text-center card-shadow">
               <CardContent className="p-6">
@@ -91,17 +79,17 @@ export function HomePage() {
             },
             {
               icon: Package,
-              title: t('home:features.modernTech'),
+              title: t('features.modernTech'),
               description: 'Built with cutting-edge technology to provide the best marketplace experience.',
             },
             {
               icon: TrendingUp,
-              title: t('home:features.scalable'),
+              title: t('features.scalable'),
               description: 'Our platform grows with your business, from startup to enterprise level.',
             },
             {
               icon: CheckCircle,
-              title: t('home:features.secure'),
+              title: t('features.secure'),
               description: 'Enterprise-grade security with regular audits and compliance checks.',
             },
           ].map((feature, index) => (

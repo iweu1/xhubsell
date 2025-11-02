@@ -4,6 +4,15 @@
   "description": "A modern e-commerce platform for sellers and buyers",
   "getStarted": "Get Started",
   "learnMore": "Learn More",
+  "hero": {
+    "title": "Discover Amazing Products",
+    "tagline": "Connect with Trusted Sellers Worldwide",
+    "description": "Find everything you need from verified sellers. Quality products, competitive prices, and secure transactions.",
+    "searchPlaceholder": "Search for products, brands, or categories...",
+    "searchButton": "Search Sellers",
+    "browseCatalog": "Browse Catalog",
+    "joinAsSeller": "Join as Seller"
+  },
   "features": {
     "title": "Features",
     "modernTech": "Modern Technology Stack",
