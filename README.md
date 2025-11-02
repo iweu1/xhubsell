@@ -185,6 +185,55 @@ docker-compose -f docker-compose.dev.yml logs -f postgres
 - User: `postgres`
 - Password: `postgres`
 
+### Database Migrations
+
+The project uses Prisma for database management and migrations.
+
+```bash
+# Navigate to API directory
+cd apps/api
+
+# Generate Prisma client
+pnpm prisma:generate
+
+# Create and apply migrations
+pnpm prisma:migrate
+
+# Reset database and reapply migrations
+pnpm db:reset
+
+# Seed database with sample data
+pnpm db:seed
+
+# Open Prisma Studio (database GUI)
+pnpm prisma:studio
+```
+
+**Migration Workflow:**
+
+1. After schema changes in `prisma/schema.prisma`:
+
+   ```bash
+   pnpm prisma:migrate --name descriptive-name
+   ```
+
+2. To reset database with fresh seed data:
+
+   ```bash
+   pnpm db:reset
+   pnpm db:seed
+   ```
+
+3. To deploy migrations to production:
+   ```bash
+   prisma migrate deploy
+   ```
+
+**Schema Documentation:**
+
+- See [docs/schema.md](./docs/schema.md) for complete ERD and model documentation
+- Use `pnpm prisma:studio` to visually explore the database
+
 ## 🔄 Redis
 
 Redis is available for caching and queuing:
