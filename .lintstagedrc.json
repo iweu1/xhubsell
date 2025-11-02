@@ -1,0 +1,6 @@
+{
+  "apps/web/**/*.{ts,tsx}": ["prettier --write"],
+  "apps/api/**/*.ts": ["prettier --write"],
+  "packages/**/*.ts": ["prettier --write"],
+  "*.{js,mjs,json,md,yml,yaml}": ["prettier --write"]
+}
