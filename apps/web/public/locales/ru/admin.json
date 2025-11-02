@@ -1,0 +1,25 @@
+{
+  "dashboard": "Панель администратора",
+  "users": "Пользователи",
+  "sellers": "Продавцы",
+  "customers": "Клиенты",
+  "products": "Товары",
+  "orders": "Заказы",
+  "analytics": "Аналитика",
+  "settings": "Настройки",
+  "logs": "Системные журналы",
+  "reports": "Отчеты",
+  "manageUsers": "Управление пользователями",
+  "manageProducts": "Управление товарами",
+  "manageOrders": "Управление заказами",
+  "systemHealth": "Состояние системы",
+  "maintenance": "Обслуживание",
+  "statistics": {
+    "totalUsers": "Всего пользователей",
+    "totalSellers": "Всего продавцов",
+    "totalProducts": "Всего товаров",
+    "totalOrders": "Всего заказов",
+    "revenue": "Общий доход",
+    "activeToday": "Активно сегодня"
+  }
+}

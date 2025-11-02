@@ -1,6 +1,6 @@
 # xhubsell
 
-A modern full-stack monorepo application built with Next.js 14 and NestJS.
+A modern full-stack monorepo application built with Next.js 14 and NestJS with full internationalization support.
 
 ## 🚀 Tech Stack
 
@@ -9,12 +9,15 @@ A modern full-stack monorepo application built with Next.js 14 and NestJS.
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **React 18** - Latest React features
+- **next-i18next** - Internationalization framework
+- **react-i18next** - React bindings for i18next
 
 ### Backend
 
 - **NestJS** - Progressive Node.js framework
 - **TypeScript** - Type-safe development
 - **Express** - Web server
+- **nestjs-i18n** - Internationalization for NestJS
 
 ### Database & Cache
 
@@ -33,6 +36,13 @@ A modern full-stack monorepo application built with Next.js 14 and NestJS.
 - **Husky** - Git hooks
 - **lint-staged** - Pre-commit linting
 - **commitlint** - Commit message linting
+
+### Internationalization
+
+- **Supported Languages**: English (en), Russian (ru)
+- **Frontend**: next-i18next with App Router support
+- **Backend**: nestjs-i18n for API responses
+- **Features**: Language detection, URL-based routing, cookie persistence
 
 ## 📁 Project Structure
 
@@ -250,6 +260,120 @@ docker exec -it xhubsell-redis redis-cli
 
 - Host: `localhost`
 - Port: `6379`
+
+## 🌍 Internationalization
+
+This project supports bilingual experience with English (en) and Russian (ru) languages.
+
+### Frontend i18n
+
+- **Framework**: next-i18next with App Router support
+- **Language Detection**: Accept-Language header, cookie persistence
+- **URL Structure**: `/en/...` and `/ru/...` routes
+- **Translation Files**: Located in `apps/web/public/locales/`
+
+#### Usage Examples:
+
+```tsx
+// Using translations in components
+import { useTranslation } from 'next-i18next';
+
+function MyComponent() {
+  const { t } = useTranslation('home');
+  return <h1>{t('welcome')}</h1>;
+}
+
+// Language switcher
+import { LanguageSwitcher } from '@/components/language-switcher';
+
+// Date/currency formatting
+import { useLocalizedFormat } from '@/hooks/use-localized-format';
+
+function PriceDisplay({ price, date }) {
+  const { formatCurrency, formatDate } = useLocalizedFormat();
+  return (
+    <div>
+      <p>{formatCurrency(price, 'USD')}</p>
+      <p>{formatDate(date)}</p>
+    </div>
+  );
+}
+```
+
+#### Translation Management:
+
+```bash
+# Check for missing translations
+cd apps/web
+pnpm i18n check
+
+# Add new translation key
+pnpm i18n add common welcomeBack "Welcome Back"
+
+# Find unused keys
+pnpm i18n unused
+```
+
+### Backend i18n
+
+- **Framework**: nestjs-i18n
+- **Language Detection**: Accept-Language header, query params, custom headers
+- **Translation Files**: Located in `apps/api/src/i18n/`
+- **Features**: Validation messages, email templates, API responses
+
+#### Usage Examples:
+
+```typescript
+// In controllers
+import { I18n, I18nContext } from 'nestjs-i18n';
+
+@Controller()
+export class MyController {
+  constructor(@I18n() private readonly i18n: I18nContext) {}
+
+  async getMessage() {
+    return {
+      message: await this.i18n.t('validation.required', {
+        lang: 'en',
+        args: { field: 'email' },
+      }),
+    };
+  }
+}
+
+// Email service with i18n
+import { EmailService } from '@/common/services/email.service';
+
+@Injectable()
+export class AuthService {
+  constructor(private readonly emailService: EmailService) {}
+
+  async sendWelcomeEmail(userEmail: string, username: string, language: string) {
+    await this.emailService.sendWelcomeEmail(userEmail, username, language);
+  }
+}
+```
+
+### Adding New Languages
+
+1. Add language code to supported locales:
+   - `apps/web/next-i18next.config.js`
+   - `apps/web/src/middleware.ts`
+   - `apps/api/src/app.module.ts`
+
+2. Create translation directories:
+
+   ```bash
+   mkdir -p apps/web/public/locales/de
+   mkdir -p apps/api/src/i18n/de
+   ```
+
+3. Copy and translate all JSON files
+4. Update language switcher component
+
+### Documentation
+
+See [docs/i18n-guide.md](./docs/i18n-guide.md) for comprehensive internationalization documentation.
 
 ## 🧪 Testing
 

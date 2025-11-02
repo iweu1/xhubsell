@@ -1,0 +1,20 @@
+{
+  "title": "Welcome to XHubSell",
+  "subtitle": "Next.js 14 App Router + NestJS Monorepo",
+  "description": "A modern e-commerce platform for sellers and buyers",
+  "getStarted": "Get Started",
+  "learnMore": "Learn More",
+  "features": {
+    "title": "Features",
+    "modernTech": "Modern Technology Stack",
+    "scalable": "Scalable Architecture",
+    "secure": "Secure & Reliable",
+    "fast": "Lightning Fast Performance"
+  },
+  "stats": {
+    "sellers": "Active Sellers",
+    "products": "Products Listed",
+    "transactions": "Successful Transactions",
+    "customers": "Happy Customers"
+  }
+}

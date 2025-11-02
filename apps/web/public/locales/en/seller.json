@@ -1,0 +1,29 @@
+{
+  "dashboard": "Seller Dashboard",
+  "products": "My Products",
+  "addProduct": "Add Product",
+  "orders": "Orders",
+  "analytics": "Analytics",
+  "profile": "Seller Profile",
+  "settings": "Account Settings",
+  "earnings": "Earnings",
+  "reviews": "Customer Reviews",
+  "messages": "Messages",
+  "productForm": {
+    "title": "Product Information",
+    "name": "Product Name",
+    "description": "Description",
+    "price": "Price",
+    "category": "Category",
+    "stock": "Stock Quantity",
+    "images": "Product Images",
+    "save": "Save Product",
+    "cancel": "Cancel"
+  },
+  "stats": {
+    "totalSales": "Total Sales",
+    "monthlyRevenue": "Monthly Revenue",
+    "totalProducts": "Total Products",
+    "avgRating": "Average Rating"
+  }
+}

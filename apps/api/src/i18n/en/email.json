@@ -1,0 +1,35 @@
+{
+  "email": {
+    "welcome": {
+      "subject": "Welcome to XHubSell!",
+      "title": "Welcome {{username}}!",
+      "body": "Thank you for joining XHubSell. We're excited to have you on board.",
+      "cta": "Get Started"
+    },
+    "verification": {
+      "subject": "Verify your email address",
+      "title": "Verify your email",
+      "body": "Please click the button below to verify your email address.",
+      "cta": "Verify Email"
+    },
+    "passwordReset": {
+      "subject": "Reset your password",
+      "title": "Password Reset Request",
+      "body": "You requested a password reset. Click the button below to reset your password.",
+      "cta": "Reset Password",
+      "expiry": "This link will expire in 1 hour."
+    },
+    "orderConfirmation": {
+      "subject": "Order Confirmation #{{orderId}}",
+      "title": "Thank you for your order!",
+      "body": "Your order has been successfully placed and will be processed shortly.",
+      "cta": "View Order"
+    },
+    "orderShipped": {
+      "subject": "Your order #{{orderId}} has been shipped",
+      "title": "Good news! Your order is on its way",
+      "body": "Your order has been shipped and will arrive within {{estimatedDays}} business days.",
+      "cta": "Track Order"
+    }
+  }
+}

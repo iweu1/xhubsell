@@ -1,0 +1,27 @@
+{
+  "title": "Каталог товаров",
+  "search": "Поиск товаров...",
+  "categories": "Категории",
+  "allCategories": "Все категории",
+  "priceRange": "Ценовой диапазон",
+  "sortBy": "Сортировка",
+  "filters": {
+    "priceLowToHigh": "Цена: по возрастанию",
+    "priceHighToLow": "Цена: по убыванию",
+    "newest": "Сначала новые",
+    "oldest": "Сначала старые",
+    "popular": "Самые популярные",
+    "rating": "С наивысшим рейтингом"
+  },
+  "noResults": "Товары не найдены",
+  "loadMore": "Загрузить еще",
+  "product": {
+    "addToCart": "В корзину",
+    "outOfStock": "Нет в наличии",
+    "inStock": "В наличии",
+    "rating": "Рейтинг",
+    "reviews": "Отзывы",
+    "specifications": "Характеристики",
+    "description": "Описание"
+  }
+}
