@@ -476,22 +476,96 @@ JWT_EXPIRES_IN=7d
 
 ## 🚢 Deployment
 
-### Build for Production
+### 🌐 Live Demo
 
-```bash
-pnpm build
+- **Frontend**: [https://xhubsell.vercel.app](https://xhubsell.vercel.app)
+- **Backend API**: [https://xhubsell-api.railway.app](https://xhubsell-api.railway.app)
+- **API Documentation**: [https://xhubsell-api.railway.app/api/docs](https://xhubsell-api.railway.app/api/docs)
+
+### 📋 Quick Deploy
+
+The application is configured for easy deployment to:
+
+- **Vercel** (Frontend - Next.js)
+- **Railway** (Backend + Database - NestJS + PostgreSQL)
+
+📖 **Full deployment guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for step-by-step instructions.
+
+### 🏗️ Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Vercel        │    │   Railway       │    │   Railway       │
+│   (Frontend)    │◄──►│   (Backend)     │◄──►│   (Database)    │
+│   Next.js       │    │   NestJS        │    │   PostgreSQL    │
+│   xhubsell.app  │    │   xhubsell-api  │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-This will build all apps in the monorepo.
+### 🛠️ Build for Production
 
-### Production Environment
+```bash
+# Build all apps
+pnpm build
 
-Ensure all environment variables are properly set for production:
+# Build specific app
+cd apps/web && pnpm build    # Frontend
+cd apps/api && pnpm build    # Backend
+```
 
-- Update `JWT_SECRET` with a secure value
-- Configure production database credentials
-- Set appropriate CORS origins
-- Enable HTTPS
+### ⚙️ Production Environment Variables
+
+#### Frontend (Vercel)
+```env
+NEXT_PUBLIC_API_URL=https://your-backend-url.railway.app
+NEXT_PUBLIC_SITE_URL=https://your-app.vercel.app
+NODE_ENV=production
+```
+
+#### Backend (Railway)
+```env
+PORT=3001
+NODE_ENV=production
+FRONTEND_URL=https://xhubsell.vercel.app
+DATABASE_URL=postgresql://...  # From Railway
+JWT_SECRET=your-secure-secret
+JWT_REFRESH_SECRET=your-secure-refresh-secret
+CORS_ORIGIN=https://xhubsell.vercel.app
+```
+
+### 🔧 Health Checks
+
+Production endpoints for monitoring:
+
+- **Frontend**: `https://xhubsell.vercel.app` (should load)
+- **Backend Health**: `https://your-backend-url.railway.app/health`
+- **Backend Ready**: `https://your-backend-url.railway.app/health/ready`
+- **API Docs**: `https://your-backend-url.railway.app/api/docs`
+
+### 🔄 CI/CD
+
+- **Automatic deployments** on push to `main` branch
+- **Preview deployments** for pull requests (Vercel)
+- **Database migrations** run automatically (Railway)
+
+### 📊 Monitoring
+
+- **Vercel**: Built-in analytics, real-time logs, error tracking
+- **Railway**: Service logs, health checks, resource metrics
+
+### 🚨 Free Tier Limits
+
+**Vercel (Free)**:
+- Unlimited deployments
+- 100GB bandwidth/month
+- Serverless functions
+
+**Railway ($5/month credit)**:
+- PostgreSQL database
+- Auto-sleep after inactivity
+- Limited resources
+
+For production traffic, consider upgrading to paid plans.
 
 ## 📝 License
 
