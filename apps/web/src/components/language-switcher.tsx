@@ -1,12 +1,10 @@
 'use client';
 
 import { useLanguage } from '@/hooks/use-language';
-import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 
 export function LanguageSwitcher() {
-  const { currentLanguage, changeLanguage, supportedLanguages } = useLanguage();
-  const { t } = useTranslation('common');
+  const { currentLanguage, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
