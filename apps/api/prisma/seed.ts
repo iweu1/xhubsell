@@ -109,6 +109,60 @@ async function main() {
   const categories = await Promise.all([
     prisma.category.create({
       data: {
+        nameEn: 'Design',
+        nameRu: 'Дизайн',
+        slug: 'design',
+        description: 'UI/UX design, graphic design, and branding',
+        icon: 'design',
+      },
+    }),
+    prisma.category.create({
+      data: {
+        nameEn: 'Programming',
+        nameRu: 'Программирование',
+        slug: 'programming',
+        description: 'Software development, web development, and programming services',
+        icon: 'programming',
+      },
+    }),
+    prisma.category.create({
+      data: {
+        nameEn: 'Marketing',
+        nameRu: 'Маркетинг',
+        slug: 'marketing',
+        description: 'Digital marketing, social media marketing, and advertising',
+        icon: 'marketing',
+      },
+    }),
+    prisma.category.create({
+      data: {
+        nameEn: 'SEO',
+        nameRu: 'SEO',
+        slug: 'seo',
+        description: 'Search engine optimization and digital marketing',
+        icon: 'seo',
+      },
+    }),
+    prisma.category.create({
+      data: {
+        nameEn: 'Copywriting',
+        nameRu: 'Копирайтинг',
+        slug: 'copywriting',
+        description: 'Content writing, copywriting, and technical writing',
+        icon: 'copywriting',
+      },
+    }),
+    prisma.category.create({
+      data: {
+        nameEn: 'Support',
+        nameRu: 'Поддержка',
+        slug: 'support',
+        description: 'Customer support, technical support, and virtual assistance',
+        icon: 'support',
+      },
+    }),
+    prisma.category.create({
+      data: {
         nameEn: 'Web Development',
         nameRu: 'Веб-разработка',
         slug: 'web-development',
@@ -123,33 +177,6 @@ async function main() {
         slug: 'mobile-development',
         description: 'iOS and Android app development',
         icon: 'mobile',
-      },
-    }),
-    prisma.category.create({
-      data: {
-        nameEn: 'Design',
-        nameRu: 'Дизайн',
-        slug: 'design',
-        description: 'UI/UX design, graphic design, and branding',
-        icon: 'design',
-      },
-    }),
-    prisma.category.create({
-      data: {
-        nameEn: 'Marketing',
-        nameRu: 'Маркетинг',
-        slug: 'marketing',
-        description: 'Digital marketing, SEO, and content marketing',
-        icon: 'marketing',
-      },
-    }),
-    prisma.category.create({
-      data: {
-        nameEn: 'Writing',
-        nameRu: 'Копирайтинг',
-        slug: 'writing',
-        description: 'Content writing, copywriting, and technical writing',
-        icon: 'writing',
       },
     }),
   ]);
@@ -192,6 +219,126 @@ async function main() {
     },
   });
 
+  // Create additional seller profiles for more top sellers
+  const sellerProfile3 = await prisma.sellerProfile.create({
+    data: {
+      userId: recruiterUser.id,
+      title: 'Digital Marketing Expert',
+      description: 'Specialized in SEO, content marketing, and social media strategies',
+      bio: 'I help businesses grow their online presence through data-driven marketing strategies. 8 years of experience in digital marketing with proven results.',
+      hourlyRate: 85.0,
+      experience: 8,
+      location: 'New York, NY',
+      languages: ['en', 'fr'],
+      skills: [
+        'SEO',
+        'Google Analytics',
+        'Content Marketing',
+        'Social Media',
+        'PPC',
+        'Email Marketing',
+      ],
+      status: SellerStatus.ACTIVE,
+      rating: 4.7,
+      reviewCount: 31,
+    },
+  });
+
+  const sellerProfile4 = await prisma.sellerProfile.create({
+    data: {
+      userId: clientUser.id,
+      title: 'Customer Support Specialist',
+      description: 'Professional customer support and virtual assistance services',
+      bio: 'Providing exceptional customer support services for businesses of all sizes. Fluent in multiple languages and experienced with various support tools.',
+      hourlyRate: 25.0,
+      experience: 4,
+      location: 'London, UK',
+      languages: ['en', 'es', 'fr'],
+      skills: [
+        'Customer Support',
+        'Technical Support',
+        'Virtual Assistant',
+        'Communication',
+        'Problem Solving',
+      ],
+      status: SellerStatus.ACTIVE,
+      rating: 4.6,
+      reviewCount: 42,
+    },
+  });
+
+  // Create additional users for more sellers
+  const sellerUser3 = await prisma.user.create({
+    data: {
+      email: 'alex.writer@xhubsell.com',
+      username: 'alexwriter',
+      password: hashedPassword,
+      firstName: 'Alex',
+      lastName: 'Johnson',
+      role: Role.SELLER,
+      language: Language.EN,
+    },
+  });
+
+  const sellerUser4 = await prisma.user.create({
+    data: {
+      email: 'sarah.seo@xhubsell.com',
+      username: 'sarahseo',
+      password: hashedPassword,
+      firstName: 'Sarah',
+      lastName: 'Williams',
+      role: Role.SELLER,
+      language: Language.EN,
+    },
+  });
+
+  const sellerProfile5 = await prisma.sellerProfile.create({
+    data: {
+      userId: sellerUser3.id,
+      title: 'Professional Copywriter',
+      description: 'Creative copywriting and content creation for businesses',
+      bio: 'Words are my passion. I create compelling content that engages audiences and drives results. Specialized in marketing copy and technical writing.',
+      hourlyRate: 45.0,
+      experience: 6,
+      location: 'Los Angeles, CA',
+      languages: ['en'],
+      skills: [
+        'Copywriting',
+        'Content Writing',
+        'Technical Writing',
+        'SEO Writing',
+        'Blog Writing',
+      ],
+      status: SellerStatus.ACTIVE,
+      rating: 4.8,
+      reviewCount: 27,
+    },
+  });
+
+  const sellerProfile6 = await prisma.sellerProfile.create({
+    data: {
+      userId: sellerUser4.id,
+      title: 'SEO Specialist',
+      description: 'Search engine optimization and digital marketing expert',
+      bio: 'I help businesses rank higher on search engines and increase their organic traffic. Proven track record in SEO for various industries.',
+      hourlyRate: 70.0,
+      experience: 5,
+      location: 'Austin, TX',
+      languages: ['en', 'es'],
+      skills: [
+        'SEO',
+        'Keyword Research',
+        'Link Building',
+        'Technical SEO',
+        'Analytics',
+        'Content Strategy',
+      ],
+      status: SellerStatus.ACTIVE,
+      rating: 4.9,
+      reviewCount: 35,
+    },
+  });
+
   console.log('💼 Created seller profiles');
 
   // Create seller-category relationships
@@ -199,19 +346,49 @@ async function main() {
     prisma.sellerCategory.create({
       data: {
         sellerId: sellerProfile1.id,
-        categoryId: categories[0].id, // Web Development
+        categoryId: categories[1].id, // Programming
       },
     }),
     prisma.sellerCategory.create({
       data: {
         sellerId: sellerProfile2.id,
-        categoryId: categories[2].id, // Design
+        categoryId: categories[0].id, // Design
       },
     }),
     prisma.sellerCategory.create({
       data: {
         sellerId: sellerProfile2.id,
-        categoryId: categories[0].id, // Web Development (frontend)
+        categoryId: categories[6].id, // Web Development (frontend)
+      },
+    }),
+    prisma.sellerCategory.create({
+      data: {
+        sellerId: sellerProfile3.id,
+        categoryId: categories[2].id, // Marketing
+      },
+    }),
+    prisma.sellerCategory.create({
+      data: {
+        sellerId: sellerProfile3.id,
+        categoryId: categories[3].id, // SEO
+      },
+    }),
+    prisma.sellerCategory.create({
+      data: {
+        sellerId: sellerProfile4.id,
+        categoryId: categories[5].id, // Support
+      },
+    }),
+    prisma.sellerCategory.create({
+      data: {
+        sellerId: sellerProfile5.id,
+        categoryId: categories[4].id, // Copywriting
+      },
+    }),
+    prisma.sellerCategory.create({
+      data: {
+        sellerId: sellerProfile6.id,
+        categoryId: categories[3].id, // SEO
       },
     }),
   ]);

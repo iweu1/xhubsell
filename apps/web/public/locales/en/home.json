@@ -25,5 +25,15 @@
     "products": "Products Listed",
     "transactions": "Successful Transactions",
     "customers": "Happy Customers"
+  },
+  "categories": {
+    "title": "Browse Service Categories",
+    "description": "Find the perfect service for your needs from our wide range of professional categories.",
+    "browseCategory": "Browse Category"
+  },
+  "topSellers": {
+    "title": "Top Sellers of the Week",
+    "description": "Discover our highest-rated sellers who consistently deliver exceptional service.",
+    "viewProfile": "View Profile"
   }
 }

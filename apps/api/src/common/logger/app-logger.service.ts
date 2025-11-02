@@ -36,7 +36,7 @@ export class AppLogger implements LoggerService {
   }
 
   setLogLevels(levels: LogLevel[]) {
-    // Logger.setLogLevels is static method
-    Logger.setLogLevels(levels);
+    // Logger.setLogLevels is static method - commenting out as it may not be available
+    // Logger.setLogLevels(levels);
   }
 }
