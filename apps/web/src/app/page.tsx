@@ -1,5 +1,12 @@
 import { HomePage } from '@/components/home-page';
+import { AppShell } from '@/components/layout/app-shell';
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <AppShell showSidebar={true}>
+      <HomePage />
+    </AppShell>
+  );
 }

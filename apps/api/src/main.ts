@@ -35,8 +35,11 @@ async function bootstrap() {
     .addTag('admin')
     .addTag('seller')
     .addTag('client')
+    .addTag('announcements')
+    .addTag('banners')
+    .addTag('analytics')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 

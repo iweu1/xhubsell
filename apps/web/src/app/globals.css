@@ -102,4 +102,60 @@
   .input-base {
     @apply flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
   }
+  
+  /* Status colors */
+  .text-status-success {
+    @apply text-green-600;
+  }
+  
+  .text-status-warning {
+    @apply text-orange-600;
+  }
+  
+  .text-status-error {
+    @apply text-red-600;
+  }
+  
+  .text-status-info {
+    @apply text-blue-600;
+  }
+  
+  .bg-status-success {
+    @apply bg-green-500;
+  }
+  
+  .bg-status-warning {
+    @apply bg-yellow-500;
+  }
+  
+  .bg-status-error {
+    @apply bg-red-500;
+  }
+  
+  .bg-status-info {
+    @apply bg-blue-500;
+  }
+  
+  /* Ticker animation */
+  @keyframes ticker-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-ticker {
+    animation: ticker-scroll 30s linear infinite;
+  }
+  
+  .animate-ticker-paused {
+    animation-play-state: paused;
+  }
+  
+  /* Shadow utilities */
+  .shadow-medium {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
 }

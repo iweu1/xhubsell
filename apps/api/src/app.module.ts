@@ -11,6 +11,9 @@ import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { SellerModule } from './seller/seller.module';
 import { ClientModule } from './client/client.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
+import { BannersModule } from './banners/banners.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @Module({
   imports: [
@@ -43,6 +46,9 @@ import { ClientModule } from './client/client.module';
     AdminModule,
     SellerModule,
     ClientModule,
+    AnnouncementsModule,
+    BannersModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

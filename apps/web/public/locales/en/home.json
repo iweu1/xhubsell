@@ -15,6 +15,34 @@
     "sellers": "Active Sellers",
     "products": "Products Listed",
     "transactions": "Successful Transactions",
-    "customers": "Happy Customers"
+    "customers": "Happy Customers",
+    "orders": "Completed Orders",
+    "clients": "Active Clients",
+    "years": "Years in Business"
+  },
+  "ticker": {
+    "ariaLabel": "Latest announcements ticker"
+  },
+  "banners": {
+    "ariaLabel": "Advertisement banner"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "description": "Get started with XHubSell in three simple steps. Connect, collaborate, and succeed.",
+    "step1": {
+      "title": "Browse Sellers",
+      "description": "Explore our extensive network of verified sellers and find the perfect match for your needs. Filter by category, rating, and location.",
+      "linkText": "Browse Sellers"
+    },
+    "step2": {
+      "title": "Contact and Hire",
+      "description": "Reach out directly to sellers, discuss your requirements, and hire with confidence through our secure platform.",
+      "linkText": "Get Started"
+    },
+    "step3": {
+      "title": "Get Results",
+      "description": "Track progress, collaborate effectively, and achieve your goals with the support of our trusted sellers.",
+      "linkText": "View Success Stories"
+    }
   }
 }
