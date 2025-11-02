@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -20,9 +21,13 @@ export function Footer({ className }: FooterProps) {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">XH</span>
-              </div>
+              <Image 
+                src="/brand/icons/icon-primary.svg" 
+                alt="XHubSell" 
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
               <span className="font-display text-xl font-bold">XHubSell</span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">

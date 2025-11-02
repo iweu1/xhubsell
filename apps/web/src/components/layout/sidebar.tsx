@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { 
@@ -56,9 +57,13 @@ export function Sidebar({ className, isOpen = true, onClose }: SidebarProps) {
         <div className="flex h-full flex-col bg-card border-r">
           {/* Logo */}
           <div className="flex h-16 items-center gap-2 border-b px-6">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">XH</span>
-            </div>
+            <Image 
+              src="/brand/icons/icon-primary.svg" 
+              alt="XHubSell" 
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
             <span className="font-display text-xl font-bold">XHubSell</span>
           </div>
           

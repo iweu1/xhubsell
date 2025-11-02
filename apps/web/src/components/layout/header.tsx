@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { Search, Menu, X, User, Settings, LogOut } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -33,9 +34,13 @@ export function Header({ className, onMenuToggle, isSidebarOpen }: HeaderProps) 
           </Button>
           
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">XH</span>
-            </div>
+            <Image 
+              src="/brand/icons/icon-primary.svg" 
+              alt="XHubSell" 
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
             <span className="font-display text-xl font-bold">XHubSell</span>
           </div>
         </div>
