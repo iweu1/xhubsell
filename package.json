@@ -19,7 +19,13 @@
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "husky",
     "commit": "git-cz",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "deploy:database": "./scripts/deploy-database.sh",
+    "deploy:secrets": "./scripts/generate-secrets.sh",
+    "deploy:frontend": "echo 'Deploy frontend via Vercel dashboard or GitHub Actions'",
+    "deploy:backend": "echo 'Deploy backend via Railway dashboard or GitHub Actions'",
+    "deploy:checklist": "echo 'See DEPLOYMENT_CHECKLIST.md for deployment verification'",
+    "deploy:health": "./scripts/health-check.sh"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",

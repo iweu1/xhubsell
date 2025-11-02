@@ -1,0 +1,14 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "cd apps/api && pnpm start:prod",
+    "healthcheckPath": "/health"
+  },
+  "services": {
+    "api": {
+      "sourceDir": "apps/api"
+    }
+  }
+}
