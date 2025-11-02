@@ -1,0 +1,25 @@
+{
+  "dashboard": "Admin Dashboard",
+  "users": "Users",
+  "sellers": "Sellers",
+  "customers": "Customers",
+  "products": "Products",
+  "orders": "Orders",
+  "analytics": "Analytics",
+  "settings": "Settings",
+  "logs": "System Logs",
+  "reports": "Reports",
+  "manageUsers": "Manage Users",
+  "manageProducts": "Manage Products",
+  "manageOrders": "Manage Orders",
+  "systemHealth": "System Health",
+  "maintenance": "Maintenance",
+  "statistics": {
+    "totalUsers": "Total Users",
+    "totalSellers": "Total Sellers",
+    "totalProducts": "Total Products",
+    "totalOrders": "Total Orders",
+    "revenue": "Total Revenue",
+    "activeToday": "Active Today"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Product Catalog",
+  "search": "Search products...",
+  "categories": "Categories",
+  "allCategories": "All Categories",
+  "priceRange": "Price Range",
+  "sortBy": "Sort By",
+  "filters": {
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "newest": "Newest First",
+    "oldest": "Oldest First",
+    "popular": "Most Popular",
+    "rating": "Highest Rated"
+  },
+  "noResults": "No products found",
+  "loadMore": "Load More",
+  "product": {
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "rating": "Rating",
+    "reviews": "Reviews",
+    "specifications": "Specifications",
+    "description": "Description"
+  }
+}

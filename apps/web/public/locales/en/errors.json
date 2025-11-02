@@ -1,0 +1,14 @@
+{
+  "generic": "Something went wrong",
+  "network": "Network error occurred",
+  "notFound": "Page not found",
+  "unauthorized": "You are not authorized to access this resource",
+  "forbidden": "Access forbidden",
+  "serverError": "Internal server error",
+  "validation": "Validation error occurred",
+  "timeout": "Request timeout",
+  "connectionLost": "Connection lost",
+  "invalidResponse": "Invalid server response",
+  "retryLater": "Please try again later",
+  "contactSupport": "Please contact support if the problem persists"
+}

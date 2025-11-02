@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { ThrottlerGuard } from '@nestjs/throttler';
+import { I18n, I18nContext } from 'nestjs-i18n';
 import { AuthService, RegisterDto, LoginDto, AuthResponse } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -24,7 +25,10 @@ import { RefreshTokenDto } from './dto/refresh-token.dto';
 @Controller('auth')
 @UseGuards(ThrottlerGuard)
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    @I18n() private readonly i18n: I18nContext
+  ) {}
 
   @Public()
   @Post('register')
