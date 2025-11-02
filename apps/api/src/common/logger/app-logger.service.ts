@@ -1,9 +1,9 @@
-import { Injectable, LoggerService, LogLevel } from '@nestjs/common';
+import { Injectable, LoggerService, LogLevel, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppLogger implements LoggerService {
-  private logger = new Logger();
+  private logger = new Logger(AppLogger.name);
 
   constructor(private configService: ConfigService) {}
 
@@ -36,6 +36,7 @@ export class AppLogger implements LoggerService {
   }
 
   setLogLevels(levels: LogLevel[]) {
-    this.logger.setLogLevels(levels);
+    // Logger.setLogLevels is static method
+    Logger.setLogLevels(levels);
   }
 }
