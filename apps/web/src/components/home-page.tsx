@@ -1,54 +1,71 @@
 'use client';
 
-import { PageHero } from '@/components/layout/page-hero';
+import { useTranslation } from 'next-i18next';
+import { HeroSearch } from '@/components/layout/hero-search';
 import { SectionHeading } from '@/components/layout/section-heading';
+import { ServiceCategories } from '@/components/home-page/service-categories';
+import { TopSellers } from '@/components/home-page/top-sellers';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ProductCard } from '@/components/examples/product-card';
 import { DataTable } from '@/components/examples/data-table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Ticker } from '@/components/ticker';
-import { BannerSlot } from '@/components/banner-slot';
-import { PlatformStats } from '@/components/platform-stats';
-import { HowItWorks } from '@/components/how-it-works';
-import { Package, TrendingUp, ArrowRight, CheckCircle, Globe, Shield, Zap } from 'lucide-react';
+import {
+  ShoppingCart,
+  Users,
+  Package,
+  TrendingUp,
+  ArrowRight,
+  CheckCircle,
+  Globe,
+  Shield,
+  Zap,
+} from 'lucide-react';
 
 export function HomePage() {
   return (
     <div className="space-y-16">
-      {/* Ticker */}
-      <Ticker />
+      {/* Hero Section with Search */}
+      <HeroSearch />
 
-      {/* Top Banner */}
-      <BannerSlot position="top" className="container" />
+      {/* Service Categories Section */}
+      <ServiceCategories />
 
-      {/* Hero Section */}
-      <PageHero
-        title="Welcome to XHubSell"
-        subtitle="Welcome to XHubSell"
-        description="Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces."
-      >
-        <Button size="lg" className="gradient-primary">
-          Get Started
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-        <Button size="lg" variant="outline">
-          Learn More
-        </Button>
-      </PageHero>
+      {/* Top Sellers Section */}
+      <TopSellers />
 
       {/* How It Works Section */}
       <HowItWorks />
 
       {/* Platform Stats Section */}
       <section className="container">
-        <SectionHeading
-          title="Platform Statistics"
-          description="Real-time metrics showing our platform's growth and impact on the marketplace."
-          align="center"
-        />
-        <PlatformStats />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: Users, label: t('stats.sellers'), value: '1,234', color: 'text-primary' },
+            { icon: Package, label: t('stats.products'), value: '45,678', color: 'text-secondary' },
+            {
+              icon: ShoppingCart,
+              label: t('stats.transactions'),
+              value: '89,012',
+              color: 'text-status-success',
+            },
+            {
+              icon: TrendingUp,
+              label: t('stats.customers'),
+              value: '234,567',
+              color: 'text-status-warning',
+            },
+          ].map((stat, index) => (
+            <Card key={index} className="text-center card-shadow">
+              <CardContent className="p-6">
+                <stat.icon className={`h-8 w-8 mx-auto mb-3 ${stat.color}`} />
+                <div className="text-2xl font-bold mb-1">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </section>
 
       {/* Inline Banner */}
@@ -87,19 +104,19 @@ export function HomePage() {
             },
             {
               icon: Package,
-              title: 'Modern Technology Stack',
+              title: t('features.modernTech'),
               description:
                 'Built with cutting-edge technology to provide the best marketplace experience.',
             },
             {
               icon: TrendingUp,
-              title: 'Scalable Architecture',
+              title: t('features.scalable'),
               description:
                 'Our platform grows with your business, from startup to enterprise level.',
             },
             {
               icon: CheckCircle,
-              title: 'Secure & Reliable',
+              title: t('features.secure'),
               description: 'Enterprise-grade security with regular audits and compliance checks.',
             },
           ].map((feature, index) => (

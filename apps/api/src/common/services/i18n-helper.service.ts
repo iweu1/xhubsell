@@ -60,8 +60,8 @@ export class I18nHelperService {
     return this.translate(key, options);
   }
 
-  async getLanguageFromContext(context?: I18nContext): string {
-    return context?.lang || 'en';
+  getLanguageFromContext(context?: I18nContext): Promise<string> {
+    return Promise.resolve(context?.lang || 'en');
   }
 
   async createLocalizedMessage(

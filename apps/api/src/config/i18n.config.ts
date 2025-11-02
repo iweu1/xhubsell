@@ -8,7 +8,7 @@ export const i18nConfig: I18nOptions = {
   },
   resolvers: [
     {
-      use: ['query', 'header'],
+      use: 'query',
       options: ['lang'],
     },
     {

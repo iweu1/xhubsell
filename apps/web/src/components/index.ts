@@ -32,10 +32,9 @@ export { ProductCard } from './examples/product-card';
 export { DataTable } from './examples/data-table';
 
 // Homepage Components
-export { Ticker } from './ticker';
-export { BannerSlot } from './banner-slot';
-export { PlatformStats } from './platform-stats';
-export { HowItWorks } from './how-it-works';
+export { HomePage } from './home-page';
+export { ServiceCategories } from './home-page/service-categories';
+export { TopSellers } from './home-page/top-sellers';
 
 // Utilities
 export { cn } from '@/lib/utils';

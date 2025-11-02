@@ -35,9 +35,7 @@ async function bootstrap() {
     .addTag('admin')
     .addTag('seller')
     .addTag('client')
-    .addTag('announcements')
-    .addTag('banners')
-    .addTag('analytics')
+    .addTag('public')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
