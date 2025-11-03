@@ -37,23 +37,10 @@ export function ServiceCategories() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Skip API calls during build time
-    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
-      setLoading(false);
-      return;
-    }
-
     const fetchCategories = async () => {
       try {
         setLoading(true);
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-
-        // Skip fetch if API URL is not available (build time)
-        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
-          setLoading(false);
-          return;
-        }
-
         const response = await fetch(`${apiUrl}/public/categories`);
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
