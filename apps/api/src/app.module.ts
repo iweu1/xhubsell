@@ -32,7 +32,7 @@ import { PublicModule } from './public/public.module';
         watch: true,
       },
       resolvers: [
-        { use: QueryResolver, options: ['lang'] },
+        new QueryResolver(['lang']),
         AcceptLanguageResolver,
         new HeaderResolver(['x-lang']),
       ],

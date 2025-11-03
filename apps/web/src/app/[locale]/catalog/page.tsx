@@ -1,47 +1,38 @@
 import { Metadata } from 'next';
 import { SEOTags } from '@/components/seo/seo';
+import { CatalogPage } from '@/components/catalog/catalog-page';
 
 interface CatalogPageProps {
   params: {
     locale: string;
   };
   searchParams: {
-    q?: string;
+    [key: string]: string | string[] | undefined;
   };
 }
 
-export const metadata: Metadata = {
-  title: 'Catalog - XHubSell',
-  description: 'Browse our extensive catalog of products from trusted sellers worldwide.',
-};
+export async function generateMetadata({ params: { locale } }: CatalogPageProps): Promise<Metadata> {
+  return {
+    title: locale === 'ru' ? 'Каталог - XHubSell' : 'Catalog - XHubSell',
+    description: locale === 'ru' 
+      ? 'Просмотрите наш обширный каталог продавцов со всего мира.'
+      : 'Browse our extensive catalog of sellers from around the world.',
+  };
+}
 
-export default function CatalogPage({ params: { locale }, searchParams }: CatalogPageProps) {
-  const searchQuery = searchParams.q || '';
-
+export default function CatalogPageClient({ params: { locale }, searchParams }: CatalogPageProps) {
+  const searchQuery = searchParams.q as string;
+  
   return (
-    <div className="container py-8">
+    <>
       <SEOTags
-        title="Catalog - XHubSell"
-        description="Browse our extensive catalog of products from trusted sellers worldwide."
+        title={locale === 'ru' ? 'Каталог - XHubSell' : 'Catalog - XHubSell'}
+        description={locale === 'ru' 
+          ? 'Просмотрите наш обширный каталог продавцов со всего мира.'
+          : 'Browse our extensive catalog of sellers from around the world.'
+        }
       />
-      <div className="max-w-4xl mx-auto text-center py-16">
-        <h1 className="text-3xl font-bold mb-4">Catalog</h1>
-        <p className="text-muted-foreground mb-8">
-          Browse our extensive catalog of products from trusted sellers worldwide.
-        </p>
-        {searchQuery && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-            <p className="text-sm text-blue-800">
-              Searching for: <strong>"{searchQuery}"</strong>
-            </p>
-          </div>
-        )}
-        <div className="bg-muted rounded-lg p-8">
-          <p className="text-sm text-muted-foreground">
-            Catalog page will be implemented with product listings, filters, and search functionality.
-          </p>
-        </div>
-      </div>
-    </div>
+      <CatalogPage locale={locale} />
+    </>
   );
 }

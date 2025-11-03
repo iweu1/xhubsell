@@ -107,7 +107,12 @@ export class UsersService {
   }
 
   async updateRole(id: string, role: Role): Promise<User> {
-    const user = await this.findById(id);
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      include: {
+        sellerProfile: true,
+      },
+    });
     if (!user) {
       throw new NotFoundException('User not found');
     }
