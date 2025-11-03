@@ -1,18 +1,14 @@
 import { Metadata } from 'next';
-import { SEOTags } from '@/components/seo/seo';
-import { CatalogPage } from '@/components/catalog/catalog-page';
 
 interface CatalogPageProps {
   params: {
     locale: string;
   };
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
 }
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'ru' }];
+}
 
 export async function generateMetadata({
   params: { locale },
@@ -26,20 +22,20 @@ export async function generateMetadata({
   };
 }
 
-export default function CatalogPageClient({ params: { locale }, searchParams }: CatalogPageProps) {
-  const searchQuery = searchParams.q as string;
-
+export default function CatalogPageClient({ params: { locale } }: CatalogPageProps) {
   return (
-    <>
-      <SEOTags
-        title={locale === 'ru' ? 'Каталог - XHubSell' : 'Catalog - XHubSell'}
-        description={
-          locale === 'ru'
-            ? 'Просмотрите наш обширный каталог продавцов со всего мира.'
+    <div className="min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 className="text-4xl font-bold text-center mb-8">
+          {locale === 'ru' ? 'Каталог' : 'Catalog'}
+        </h1>
+        <p className="text-center text-muted-foreground">
+          {locale === 'ru' 
+            ? 'Просмотрите наш обширный каталог продавцов со всего мира.' 
             : 'Browse our extensive catalog of sellers from around the world.'
-        }
-      />
-      <CatalogPage locale={locale} />
-    </>
+          }
+        </p>
+      </div>
+    </div>
   );
 }
