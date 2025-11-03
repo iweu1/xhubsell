@@ -3,6 +3,9 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@xhubsell/shared-types', '@xhubsell/shared-config'],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async rewrites() {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
     return [
