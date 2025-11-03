@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   transpilePackages: ['@xhubsell/shared-types', '@xhubsell/shared-config'],
   eslint: {
@@ -9,6 +10,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    unoptimized: true,
+  },
   // Make sure API URL is not localhost during build
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || '',
@@ -16,15 +20,6 @@ const nextConfig = {
   // Disable static optimization for pages that need API
   experimental: {
     missingSuspenseWithCSRBailout: false,
-  },
-  async rewrites() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${apiUrl}/api/:path*`,
-      },
-    ];
   },
 };
 
