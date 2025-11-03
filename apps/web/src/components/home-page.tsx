@@ -5,6 +5,8 @@ import { HeroSearch } from '@/components/layout/hero-search';
 import { SectionHeading } from '@/components/layout/section-heading';
 import { ServiceCategories } from '@/components/home-page/service-categories';
 import { TopSellers } from '@/components/home-page/top-sellers';
+import { HowItWorks } from '@/components/how-it-works';
+import { BannerSlot } from '@/components/banner-slot';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +26,7 @@ import {
 } from 'lucide-react';
 
 export function HomePage() {
+  const { t } = useTranslation(['home', 'common']);
   return (
     <div className="space-y-16">
       {/* Hero Section with Search */}

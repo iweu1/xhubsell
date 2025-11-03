@@ -3,9 +3,13 @@ import { HomePage } from '@/components/home-page';
 import { generateMetadata } from '@/components/seo/seo';
 import { AppShell } from '@/components/layout/app-shell';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = generateMetadata({
   title: 'Welcome to XHubSell',
-  description: 'Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces.',
+  description:
+    'Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces.',
   keywords: 'marketplace, e-commerce, sellers, buyers, online shopping, trusted sellers',
 });
 

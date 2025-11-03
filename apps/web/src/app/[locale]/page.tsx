@@ -8,13 +8,17 @@ interface HomePageProps {
   };
 }
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ru' }];
 }
 
 export const metadata: Metadata = generateMetadata({
   title: 'Welcome to XHubSell',
-  description: 'Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces.',
+  description:
+    'Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces.',
   keywords: 'marketplace, e-commerce, sellers, buyers, online shopping, trusted sellers',
 });
 

@@ -27,6 +27,12 @@ export function BannerSlot({ position, className }: BannerSlotProps) {
   const [trackedImpressions, setTrackedImpressions] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchBanners = async () => {
       try {
         const response = await fetch(`/api/banners?active=true&position=${position}`);
@@ -46,6 +52,11 @@ export function BannerSlot({ position, className }: BannerSlotProps) {
 
   const trackImpression = useCallback(
     async (bannerId: string) => {
+      // Skip tracking during build time
+      if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+        return;
+      }
+
       if (trackedImpressions.has(bannerId)) return;
 
       try {

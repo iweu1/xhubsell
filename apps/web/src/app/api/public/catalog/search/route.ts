@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    
+
     // Forward all query parameters
     const queryString = searchParams.toString();
     const url = `${apiUrl}/public/catalog/search${queryString ? `?${queryString}` : ''}`;
-    
+
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -24,9 +27,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching sellers:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch sellers' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch sellers' }, { status: 500 });
   }
 }
