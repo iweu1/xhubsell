@@ -486,12 +486,37 @@ JWT_EXPIRES_IN=7d
 
 The application is configured for easy deployment to:
 
-- **Vercel** (Frontend - Next.js)
-- **Railway** (Backend + Database - NestJS + PostgreSQL)
+#### Frontend Options:
 
-📖 **Full deployment guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for step-by-step instructions.
+- **Netlify** (Recommended - Next.js) - See [DEPLOYMENT_NETLIFY.md](./DEPLOYMENT_NETLIFY.md)
+- **Vercel** (Next.js) - See [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+#### Backend Options:
+
+- **Render** (Recommended - Free tier)
+- **Railway** (Backend + Database - NestJS + PostgreSQL)
+- **Vercel Serverless Functions**
+- **Netlify Functions** (Serverless)
+
+📖 **Deployment guides**:
+
+- [Netlify Deployment](./DEPLOYMENT_NETLIFY.md) - Recommended setup
+- [Vercel + Railway Deployment](./DEPLOYMENT.md) - Alternative setup
 
 ### 🏗️ Architecture
+
+#### Recommended (Netlify + Render):
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Netlify       │    │   Render        │    │   Render        │
+│   (Frontend)    │◄──►│   (Backend)     │◄──►│   (Database)    │
+│   Next.js       │    │   NestJS        │    │   PostgreSQL    │
+│   xhubsell.netlify.app │   xhubsell-api  │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+#### Alternative (Vercel + Railway):
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -515,27 +540,45 @@ cd apps/api && pnpm build    # Backend
 
 ### ⚙️ Production Environment Variables
 
-#### Frontend (Vercel)
+#### Frontend (Netlify)
+
+```env
+NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com
+NEXT_PUBLIC_SITE_URL=https://xhubsell.netlify.app
+NODE_ENV=production
+```
+
+#### Frontend (Vercel - Alternative)
+
 ```env
 NEXT_PUBLIC_API_URL=https://your-backend-url.railway.app
 NEXT_PUBLIC_SITE_URL=https://your-app.vercel.app
 NODE_ENV=production
 ```
 
-#### Backend (Railway)
+#### Backend (Render/Railway)
+
 ```env
 PORT=3001
 NODE_ENV=production
-FRONTEND_URL=https://xhubsell.vercel.app
-DATABASE_URL=postgresql://...  # From Railway
+FRONTEND_URL=https://xhubsell.netlify.app
+DATABASE_URL=postgresql://...  # From database provider
 JWT_SECRET=your-secure-secret
 JWT_REFRESH_SECRET=your-secure-refresh-secret
-CORS_ORIGIN=https://xhubsell.vercel.app
+CORS_ORIGIN=https://xhubsell.netlify.app
 ```
 
 ### 🔧 Health Checks
 
 Production endpoints for monitoring:
+
+#### Netlify + Render Setup:
+
+- **Frontend**: `https://xhubsell.netlify.app` (should load)
+- **Backend Health**: `https://your-backend-url.onrender.com/health`
+- **Backend Ready**: `https://your-backend-url.onrender.com/health/ready`
+
+#### Vercel + Railway Setup:
 
 - **Frontend**: `https://xhubsell.vercel.app` (should load)
 - **Backend Health**: `https://your-backend-url.railway.app/health`
@@ -544,23 +587,46 @@ Production endpoints for monitoring:
 
 ### 🔄 CI/CD
 
-- **Automatic deployments** on push to `main` branch
-- **Preview deployments** for pull requests (Vercel)
-- **Database migrations** run automatically (Railway)
+- **Automatic deployments** on push to `main` branch (Netlify/Render/Railway/Vercel)
+- **Preview deployments** for pull requests (Netlify/Vercel)
+- **Database migrations** run automatically (Render/Railway)
 
 ### 📊 Monitoring
+
+#### Netlify Setup:
+
+- **Netlify**: Built-in analytics, real-time logs, function logs
+- **Render**: Service logs, health checks, resource metrics
+
+#### Vercel + Railway Setup:
 
 - **Vercel**: Built-in analytics, real-time logs, error tracking
 - **Railway**: Service logs, health checks, resource metrics
 
 ### 🚨 Free Tier Limits
 
-**Vercel (Free)**:
+#### Netlify (Free):
+
+- Unlimited deployments
+- 100GB bandwidth/month
+- Serverless functions
+- 300 minutes build time/month
+
+#### Render (Free):
+
+- Unlimited static sites
+- Web services with auto-sleep (15 mins)
+- PostgreSQL database
+- 750 hours/month
+
+#### Vercel (Free):
+
 - Unlimited deployments
 - 100GB bandwidth/month
 - Serverless functions
 
-**Railway ($5/month credit)**:
+#### Railway ($5/month credit):
+
 - PostgreSQL database
 - Auto-sleep after inactivity
 - Limited resources
