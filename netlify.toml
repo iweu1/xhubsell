@@ -6,13 +6,3 @@
   NODE_VERSION = "20"
   PNPM_VERSION = "10"
   NPM_FLAGS = "--legacy-peer-deps"
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/___netlify-handler"
-  status = 200
-  force = true
-
-[functions]
-  directory = "apps/web/.netlify/functions-internal"
-  node_bundler = "esbuild"
