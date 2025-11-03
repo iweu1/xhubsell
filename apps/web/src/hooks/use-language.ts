@@ -1,11 +1,9 @@
 'use client';
 
-import { useTranslation } from 'next-i18next';
 import { useRouter, usePathname } from 'next/navigation';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export function useLanguage() {
-  const { i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -34,7 +32,13 @@ export function useLanguage() {
     [router, pathname]
   );
 
-  const currentLanguage = i18n.language;
+  // Detect current language from pathname
+  const currentLanguage = useMemo(() => {
+    const segments = pathname.split('/').filter(Boolean);
+    const firstSegment = segments[0];
+    return ['en', 'ru'].includes(firstSegment) ? firstSegment : 'en';
+  }, [pathname]);
+
   const isRTL = ['ar', 'he', 'fa'].includes(currentLanguage);
 
   return {

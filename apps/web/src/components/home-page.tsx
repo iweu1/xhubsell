@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslation } from 'next-i18next';
+import { useMockTranslation } from '@/hooks/use-mock-translation';
 import { HeroSearch } from '@/components/layout/hero-search';
 import { SectionHeading } from '@/components/layout/section-heading';
 import { ServiceCategories } from '@/components/home-page/service-categories';
@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 
 export function HomePage() {
-  const { t } = useTranslation(['home', 'common']);
+  const { t } = useMockTranslation();
   return (
     <div className="space-y-16">
       {/* Hero Section with Search */}
