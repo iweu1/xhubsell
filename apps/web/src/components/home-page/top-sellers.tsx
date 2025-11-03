@@ -52,10 +52,23 @@ export function TopSellers() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      setLoading(false);
+      return;
+    }
+
     const fetchTopSellers = async () => {
       try {
         setLoading(true);
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+        // Skip fetch if API URL is not available (build time)
+        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+          setLoading(false);
+          return;
+        }
+
         const response = await fetch(`${apiUrl}/public/sellers/top?limit=8`);
         if (!response.ok) {
           throw new Error('Failed to fetch top sellers');

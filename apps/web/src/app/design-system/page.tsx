@@ -1,26 +1,29 @@
-import { generateMetadata } from '@/components/seo/seo'
-import { PageHero } from '@/components/layout/page-hero'
-import { SectionHeading } from '@/components/layout/section-heading'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
+import { generateMetadata } from '@/components/seo/seo';
+import { PageHero } from '@/components/layout/page-hero';
+import { SectionHeading } from '@/components/layout/section-heading';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { ProductCard } from '@/components/examples/product-card'
+} from '@/components/ui/dialog';
+import { ProductCard } from '@/components/examples/product-card';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = generateMetadata({
   title: 'Design System Demo',
   description: 'Explore the XHubSell design system components and patterns',
-})
+});
 
 export default function DesignSystemDemo() {
   return (
@@ -33,11 +36,11 @@ export default function DesignSystemDemo() {
 
       {/* Color Palette */}
       <section className="container">
-        <SectionHeading 
+        <SectionHeading
           title="Color Palette"
           description="Primary and secondary colors with status indicators."
         />
-        
+
         <div className="space-y-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">Primary Colors</h3>
@@ -54,7 +57,7 @@ export default function DesignSystemDemo() {
               </div>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Status Colors</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -81,11 +84,11 @@ export default function DesignSystemDemo() {
 
       {/* Typography */}
       <section className="container">
-        <SectionHeading 
+        <SectionHeading
           title="Typography"
           description="Font scales and hierarchy using Inter and Montserrat."
         />
-        
+
         <div className="space-y-6">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-display font-bold">Heading 1 - Display</h1>
@@ -93,7 +96,9 @@ export default function DesignSystemDemo() {
             <h3 className="text-2xl md:text-3xl font-display font-bold">Heading 3 - Display</h3>
             <h4 className="text-xl md:text-2xl font-display font-bold">Heading 4 - Display</h4>
             <p className="text-lg font-sans">Body text large - Inter font family for readability</p>
-            <p className="text-base font-sans">Body text regular - Inter font family for readability</p>
+            <p className="text-base font-sans">
+              Body text regular - Inter font family for readability
+            </p>
             <p className="text-sm font-sans">Body text small - Inter font family for readability</p>
           </div>
         </div>
@@ -101,11 +106,11 @@ export default function DesignSystemDemo() {
 
       {/* Components */}
       <section className="container">
-        <SectionHeading 
+        <SectionHeading
           title="UI Components"
           description="Reusable components with variants and states."
         />
-        
+
         <Tabs defaultValue="buttons" className="space-y-8">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="buttons">Buttons</TabsTrigger>
@@ -113,7 +118,7 @@ export default function DesignSystemDemo() {
             <TabsTrigger value="forms">Forms</TabsTrigger>
             <TabsTrigger value="badges">Badges</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="buttons" className="space-y-6">
             <Card>
               <CardHeader>
@@ -128,7 +133,7 @@ export default function DesignSystemDemo() {
                   <Button variant="ghost">Ghost</Button>
                   <Button variant="destructive">Destructive</Button>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-4">
                   <Button size="sm">Small</Button>
                   <Button>Default</Button>
@@ -138,7 +143,7 @@ export default function DesignSystemDemo() {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="cards" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <ProductCard />
@@ -162,7 +167,7 @@ export default function DesignSystemDemo() {
               </Card>
             </div>
           </TabsContent>
-          
+
           <TabsContent value="forms" className="space-y-6">
             <Card>
               <CardHeader>
@@ -174,12 +179,12 @@ export default function DesignSystemDemo() {
                   <label className="text-sm font-medium">Text Input</label>
                   <Input placeholder="Enter text here..." />
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Email Input</label>
                   <Input type="email" placeholder="email@example.com" />
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Password Input</label>
                   <Input type="password" placeholder="Enter password" />
@@ -187,7 +192,7 @@ export default function DesignSystemDemo() {
               </CardContent>
             </Card>
           </TabsContent>
-          
+
           <TabsContent value="badges" className="space-y-6">
             <Card>
               <CardHeader>
@@ -212,11 +217,11 @@ export default function DesignSystemDemo() {
 
       {/* Layout Examples */}
       <section className="container">
-        <SectionHeading 
+        <SectionHeading
           title="Layout Components"
           description="Page structure and navigation components."
         />
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card>
             <CardHeader>
@@ -232,7 +237,8 @@ export default function DesignSystemDemo() {
                   <DialogHeader>
                     <DialogTitle>Dialog Title</DialogTitle>
                     <DialogDescription>
-                      This is a dialog content area where you can place forms, information, or any other content.
+                      This is a dialog content area where you can place forms, information, or any
+                      other content.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="py-4">
@@ -242,7 +248,7 @@ export default function DesignSystemDemo() {
               </Dialog>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardHeader>
               <CardTitle>Tabs</CardTitle>
@@ -272,11 +278,11 @@ export default function DesignSystemDemo() {
 
       {/* Skeleton Loading States */}
       <section className="container">
-        <SectionHeading 
+        <SectionHeading
           title="Loading States"
           description="Skeleton components for better perceived performance."
         />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
@@ -289,13 +295,13 @@ export default function DesignSystemDemo() {
               <Skeleton className="h-4 w-3/4" />
             </CardContent>
           </Card>
-          
+
           <div className="space-y-3">
             <Skeleton className="h-12 w-full" />
             <Skeleton className="h-12 w-full" />
             <Skeleton className="h-12 w-full" />
           </div>
-          
+
           <div className="space-y-3">
             <div className="flex items-center space-x-4">
               <Skeleton className="h-12 w-12 rounded-full" />
@@ -308,5 +314,5 @@ export default function DesignSystemDemo() {
         </div>
       </section>
     </div>
-  )
+  );
 }
