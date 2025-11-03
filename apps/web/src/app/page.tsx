@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HomePage } from '@/components/home-page';
 import { generateMetadata } from '@/components/seo/seo';
+import { AppShell } from '@/components/layout/app-shell';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Welcome to XHubSell',
