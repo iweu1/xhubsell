@@ -8,7 +8,7 @@ import {
   CatalogPagination, 
   CatalogSkeleton, 
   EmptyState 
-} from './catalog';
+} from './index';
 import { useCatalog } from '@/hooks/use-catalog';
 import { cn } from '@/lib/utils';
 
