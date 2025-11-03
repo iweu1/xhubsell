@@ -32,6 +32,9 @@ lerna-debug.log*
 # Vercel
 .vercel
 
+# Netlify
+.netlify
+
 # Turborepo
 .turbo
 
