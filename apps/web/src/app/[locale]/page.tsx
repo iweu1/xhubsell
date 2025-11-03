@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { HomePage } from '@/components/home-page';
+import { generateMetadata } from '@/components/seo/seo';
 
 interface HomePageProps {
   params: {
@@ -10,22 +12,12 @@ export async function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ru' }];
 }
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
   title: 'Welcome to XHubSell',
-  description: 'Connect with sellers and buyers worldwide.',
-};
+  description: 'Connect with sellers and buyers worldwide. Experience seamless commerce with innovative solutions designed for modern marketplaces.',
+  keywords: 'marketplace, e-commerce, sellers, buyers, online shopping, trusted sellers',
+});
 
 export default function Home({ params: { locale } }: HomePageProps) {
-  return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-4xl font-bold text-center mb-8">
-          {locale === 'ru' ? 'Добро пожаловать в XHubSell' : 'Welcome to XHubSell'}
-        </h1>
-        <p className="text-center text-muted-foreground">
-          {locale === 'ru' ? 'Связывайтесь с продавцами и покупателями по всему миру.' : 'Connect with sellers and buyers worldwide.'}
-        </p>
-      </div>
-    </div>
-  );
+  return <HomePage />;
 }
