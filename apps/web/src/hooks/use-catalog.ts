@@ -163,9 +163,21 @@ export function useCatalog(userId?: string) {
 
   // Fetch categories
   useEffect(() => {
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      return;
+    }
+
     const fetchCategories = async () => {
       try {
-        const response = await fetch('/api/public/categories');
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+        // Skip fetch if API URL is not available (build time)
+        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+          return;
+        }
+
+        const response = await fetch(`${apiUrl}/public/categories`);
         if (!response.ok) throw new Error('Failed to fetch categories');
         const data = await response.json();
         setCategories(data);
@@ -179,10 +191,24 @@ export function useCatalog(userId?: string) {
 
   // Fetch sellers
   const fetchSellers = useCallback(async (page: number = 1) => {
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+      // Skip fetch if API URL is not available (build time)
+      if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+        setLoading(false);
+        return;
+      }
+
       const params = new URLSearchParams();
       
       if (filters.searchQuery) params.set('q', filters.searchQuery);
@@ -200,7 +226,7 @@ export function useCatalog(userId?: string) {
       params.set('page', page.toString());
       params.set('limit', '12');
 
-      const response = await fetch(`/api/public/catalog/search?${params}`);
+      const response = await fetch(`${apiUrl}/public/catalog/search?${params}`);
       if (!response.ok) throw new Error('Failed to fetch sellers');
       
       const data: CatalogResponse = await response.json();
@@ -237,9 +263,21 @@ export function useCatalog(userId?: string) {
       return;
     }
 
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      return;
+    }
+
     try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+      // Skip fetch if API URL is not available (build time)
+      if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+        return;
+      }
+
       const method = isFavorited ? 'DELETE' : 'POST';
-      const response = await fetch(`/api/public/favorites/${sellerId}`, {
+      const response = await fetch(`${apiUrl}/public/favorites/${sellerId}`, {
         method,
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

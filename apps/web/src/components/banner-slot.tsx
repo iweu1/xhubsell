@@ -35,7 +35,15 @@ export function BannerSlot({ position, className }: BannerSlotProps) {
 
     const fetchBanners = async () => {
       try {
-        const response = await fetch(`/api/banners?active=true&position=${position}`);
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+        // Skip fetch if API URL is not available (build time)
+        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+          setIsLoading(false);
+          return;
+        }
+
+        const response = await fetch(`${apiUrl}/banners?active=true&position=${position}`);
         if (response.ok) {
           const data = await response.json();
           setBanners(data);
@@ -60,7 +68,14 @@ export function BannerSlot({ position, className }: BannerSlotProps) {
       if (trackedImpressions.has(bannerId)) return;
 
       try {
-        await fetch(`/api/banners/${bannerId}/impression`, {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+        // Skip fetch if API URL is not available (build time)
+        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+          return;
+        }
+
+        await fetch(`${apiUrl}/banners/${bannerId}/impression`, {
           method: 'POST',
         });
         setTrackedImpressions((prev) => new Set([...prev, bannerId]));

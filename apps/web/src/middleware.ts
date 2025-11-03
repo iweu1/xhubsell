@@ -31,9 +31,8 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip middleware for API routes, static files, and Next.js internals
+  // Skip middleware for static files and Next.js internals
   if (
-    pathname.startsWith('/api/') ||
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/static/') ||
     pathname.includes('.')

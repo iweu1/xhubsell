@@ -23,9 +23,23 @@ export function Ticker({ className }: TickerProps) {
   const tickerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Skip API calls during build time
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchAnnouncements = async () => {
       try {
-        const response = await fetch('/api/announcements?active=true');
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+        // Skip fetch if API URL is not available (build time)
+        if (!apiUrl || (apiUrl === 'http://localhost:3001' && typeof window === 'undefined')) {
+          setIsLoading(false);
+          return;
+        }
+
+        const response = await fetch(`${apiUrl}/announcements?active=true`);
         if (response.ok) {
           const data = await response.json();
           setAnnouncements(data);
