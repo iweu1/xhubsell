@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useMockTranslation } from '@/hooks/use-mock-translation';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,7 +12,7 @@ interface HeroSearchProps {
 }
 
 export function HeroSearch({ className }: HeroSearchProps) {
-  const { t } = useTranslation('home');
+  const { t } = useMockTranslation();
   const router = useRouter();
   const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState('');
@@ -46,24 +46,24 @@ export function HeroSearch({ className }: HeroSearchProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-orange-600/5" />
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full filter blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-400/20 rounded-full filter blur-3xl" />
-        
+
         <div className="relative container py-16 md:py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
             {/* Tagline */}
             <p className="text-sm font-medium text-primary mb-4 animate-fade-in">
               {t('hero:tagline')}
             </p>
-            
+
             {/* Main heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight mb-6 animate-fade-in">
               {t('hero:title')}
             </h1>
-            
+
             {/* Description */}
             <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in">
               {t('hero:description')}
             </p>
-            
+
             {/* Search Section */}
             <div className="max-w-2xl mx-auto mb-12 animate-fade-in">
               <form onSubmit={handleSearch} className="relative" role="search">
@@ -101,7 +101,7 @@ export function HeroSearch({ className }: HeroSearchProps) {
                 </div>
               </form>
             </div>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
               <Button

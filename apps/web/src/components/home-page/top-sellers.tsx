@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useMockTranslation } from '@/hooks/use-mock-translation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SectionHeading } from '@/components/layout/section-heading';
@@ -46,7 +46,7 @@ interface Seller {
 }
 
 export function TopSellers() {
-  const { t, i18n } = useTranslation(['home', 'common']);
+  const { t, i18n } = useMockTranslation();
   const [sellers, setSellers] = useState<Seller[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

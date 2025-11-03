@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useMockTranslation } from '@/hooks/use-mock-translation';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/layout/section-heading';
 import { Card, CardContent } from '@/components/ui/card';
@@ -31,7 +31,7 @@ const categoryIcons = {
 };
 
 export function ServiceCategories() {
-  const { t, i18n } = useTranslation(['home', 'common']);
+  const { t, i18n } = useMockTranslation();
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
